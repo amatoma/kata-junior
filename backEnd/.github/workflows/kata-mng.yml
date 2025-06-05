@@ -1,0 +1,30 @@
+name: kata-mng
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v3
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Instalar dependencias
+        run: npm install
+
+      - name: Compilar TypeScript
+        run: npm run build
+
+      - name: Ejecutar servidor y probar conexión
+        run: |
+          nohup node dist/server.js & sleep 3
+          curl -I http://localhost:3000 || echo "Servidor no responde"
