@@ -1,13 +1,8 @@
-# kata-mng
+# kata-junior
 🚀 Características
 📋 Registro de nuevos ingresos (usuarios)
 
-🔐 Solicitudes de acceso a recursos
-
-💻 Asignación de computadores portátiles
-
-📊 Visualización de solicitudes recientes mediante 
-💬 Visualización de detalles con modales interactivos
+📊 Visualización de solicitudes recientes 
 ✅ Arquitectura desacoplada y escalable con enfoque en microservicios
 
 🛠️ Tecnologías
