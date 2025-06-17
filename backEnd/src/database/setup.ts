@@ -3,36 +3,24 @@ import { initDB } from './db';
 (async () => {
   const db = await initDB();
 
+  await db.exec(`DROP TABLE IF EXISTS usuarios`);
+
   await db.exec(`
     CREATE TABLE IF NOT EXISTS usuarios (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       nombre TEXT,
       correo TEXT,
-      area TEXT,
-      rol TEXT,
-      estado TEXT
+      estado TEXT,
+      fecha_ingreso TEXT,
+      onboarding_bienvenida INTEGER,  -- 0 o 1 (false/true)
+      onboarding_tecnico INTEGER,     -- 0 o 1 (false/true)
+      fecha_onboarding_tecnico TEXT
     );
   `);
 
-  await db.exec(`
-    CREATE TABLE IF NOT EXISTS access_requests (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      nombre TEXT,
-      correo TEXT,
-      accesos_solicitados TEXT, -- ← Aquí guardamos el array como string JSON
-      estado TEXT DEFAULT 'pendiente'
-    );
-  `);
+  await db.exec(`DELETE FROM usuarios;`);
 
-  await db.exec(`
-  CREATE TABLE IF NOT EXISTS asignaciones_computadores (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    nombre_usuario TEXT,
-    equipo TEXT,
-    numero_serie TEXT,
-    fecha_entrega TEXT
-  );
-`);
+  
 
-  console.log("Tablas usuarios y access_requests creadas correctamente.");
+  console.log("Tablas usuarios  creadas correctamente.");
 })();
