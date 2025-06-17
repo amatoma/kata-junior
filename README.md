@@ -6,7 +6,7 @@
 ✅ Arquitectura desacoplada y escalable con enfoque en microservicios
 
 🛠️ Tecnologías
-Angular 17+
+Angular 19+
 
 TypeScript
 Web Components (Sherpa 6.2.2)
